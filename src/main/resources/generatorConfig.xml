@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- Note that you have to specify the driver place here. The tool does
+        not appear to use the Eclipse classpath or the project classpath -->
+
+    <context id="context1" targetRuntime="MyBatis3">
+        <!--注释控制-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- Where to pull the data from -->
+        <jdbcConnection driverClass="org.h2.Driver"
+                        connectionURL="jdbc:h2:mem:test" userId="sa" password="">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="tech.zeping.mybatisenum.entity" targetProject="./src/main/java"/>
+        <!-- sql map -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- Generates the interfaces used to retrieve data -->
+        <javaClientGenerator targetPackage="tech.zeping.mybatisenum.dao"
+                             targetProject="./src/main/java"
+                             type="XMLMAPPER"/>
+
+
+        <table schema="" tableName="user">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC"/>
+            <columnOverride column="username" javaType="java.lang.String" />
+            <columnOverride column="state" javaType="tech.zeping.mybatisenum.enums.UserState" />
+        </table>
+
+
+
+    </context>
+</generatorConfiguration>

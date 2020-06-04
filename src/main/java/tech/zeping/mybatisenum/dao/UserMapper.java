@@ -1,10 +1,13 @@
 package tech.zeping.mybatisenum.dao;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import tech.zeping.mybatisenum.entity.User;
 import tech.zeping.mybatisenum.entity.UserExample;
 
+@Mapper
 public interface UserMapper {
     long countByExample(UserExample example);
 

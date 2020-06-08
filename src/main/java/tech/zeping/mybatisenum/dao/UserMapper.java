@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 import tech.zeping.mybatisenum.entity.User;
 import tech.zeping.mybatisenum.entity.UserExample;
 
 @Mapper
+@Component
 public interface UserMapper {
     long countByExample(UserExample example);
 

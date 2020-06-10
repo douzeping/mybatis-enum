@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tech.zeping.mybatisenum.dao.UserMapper;
 import tech.zeping.mybatisenum.entity.User;
-import tech.zeping.mybatisenum.enums.UserState;
+import tech.zeping.mybatisenum.pojo.request.UserRequest;
 
 @RestController
 public class UserController {
@@ -14,9 +14,9 @@ public class UserController {
     private UserMapper userMapper;
 
     @GetMapping("/add")
-    public void add(){
+    public void add(UserRequest.AddUser request){
         User user = new User();
-        user.setState(UserState.UNAUTHENTICATED);
+        user.setState(request.getUserState());
         user.setUsername("test11");
         userMapper.insert(user);
     }
